@@ -71,7 +71,7 @@ gulp.task("clean:dist", function() {
 });
 
 gulp.task(
-  "build:all",
+  "build:dist",
   gulp.parallel(
     "build:css",
     "build:js",
@@ -80,3 +80,5 @@ gulp.task(
     "copy:bootstrap"
   )
 );
+
+gulp.task("build:all", gulp.series("clean:dist", "build:dist"));
