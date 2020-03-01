@@ -31,6 +31,12 @@ gulp.task("build:html", function() {
         "css/bootstrap.min.css"
       )
     )
+    .pipe(
+      replace(
+        "js/tableau.extensions.1.latest.js",
+        "js/tableau.extensions.1.latest-min.js"
+      )
+    )
     .pipe(replace("libs/jquery/dist/jquery.min.js", "js/jquery.min.js"))
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("dist"));
@@ -40,6 +46,12 @@ gulp.task("copy:bootstrap", function() {
   return gulp
     .src("source/libs/bootstrap/dist/css/bootstrap.min.css")
     .pipe(gulp.dest("dist/css"));
+});
+
+gulp.task("copy:jquery", function() {
+  return gulp
+    .src("source/libs/jquery/dist/jquery.min.js")
+    .pipe(gulp.dest("dist/js"));
 });
 
 gulp.task("copy:jquery", function() {
